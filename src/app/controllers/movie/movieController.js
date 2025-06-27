@@ -1,12 +1,17 @@
 const express = require('express');
-const router = express.Router()
+const Movie = require('../../models/movie');
 
 
 
-router.get('/', (req, res) => {
-    return res.status(200).json({
-        message: 'API is running'
+
+module.exports = () => {
+    const router = express.Router();
+
+    router.get('/', async (req, res) => {
+        return res.status(200).json( await Movie.findAll());
+
     });
-});
+    return router;
+}
 
-module.exports = router;
+
