@@ -23,9 +23,9 @@ const Movie = sequelize.define("movie",{
         defaultValue: ''
     },
     winner:{
-        type: DataTypes.STRING,
+        type: DataTypes.BOOLEAN,
         allowNull: false,
-        defaultValue: ''
+        defaultValue: false
     },
     createdAt: {
         type: DataTypes.DATE,

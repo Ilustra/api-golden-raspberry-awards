@@ -4,7 +4,7 @@ const {  readMoviesFromCSV } = require('./app/utils/readMoviesFromCSV');
 const app = express();
 const sequelize = require('./app/config/database');
 const Movie = require('./app/models/movie');
-
+app.use(express.json());
 readMoviesFromCSV('../../../movielist.csv')
   .then(async (movies)  => {
       try{
