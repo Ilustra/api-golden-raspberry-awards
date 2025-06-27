@@ -21,5 +21,13 @@ npm run dev
 
 Para executar os testes HTTP utilizando os arquivos `.http`, é necessário instalar a extensão [REST Client](https://marketplace.visualstudio.com/items?itemName=humao.rest-client) no VS Code.
 ## Testes HTTP
-Além do arquivo [`movie.http`](./movie.http), todos os arquivos dentro da pasta [`src/test/restclient`](./src/test/restclient) também podem ser utilizados para testar os endpoints HTTP da API.
 Os testes dos endpoints HTTP podem ser realizados utilizando o arquivo [`./src/test/restclient/movie.http`](./src/test/restclient/movie.http). Utilize uma extensão compatível (como o REST Client no VS Code) para enviar requisições e validar as respostas da API.
+
+
+## Executando os Testes
+
+Para executar os testes automatizados do projeto, utilize o comando:
+
+```bash
+npm test
+```
