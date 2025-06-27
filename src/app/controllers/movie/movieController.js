@@ -9,7 +9,7 @@ module.exports = () => {
     const router = express.Router();
 
 
-    router.get('/winner', async (req, res) => {
+    router.get('/intervals', async (req, res) => {
         const winner = await findWinner();
         return res.status(200).json(winner);
     });

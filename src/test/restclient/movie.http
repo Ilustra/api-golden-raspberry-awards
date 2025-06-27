@@ -4,7 +4,7 @@
 GET {{URL}}/movies HTTP/1.1
 
 ### FIND ALL MOVIES
-GET {{URL}}/movies/winner HTTP/1.1
+GET {{URL}}/movies/intervals HTTP/1.1
 
 ### FIND BY ID 
 GET {{URL}}/movies/1 HTTP/1.1
