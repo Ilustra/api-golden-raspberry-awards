@@ -68,4 +68,25 @@ describe("readMoviesFromCSV", () => {
 
     expect(response.body).not.toEqual(filterByTemplate);
   });
+
+    it("should insert a new movie", async () => {
+    const expectedMovies = await readMoviesFromCSV("../../../movielist.csv");
+    const insertMovie = {
+      id: 999,
+      year: 2023,
+      title: "MOVIE OUTSERA UPDATED",
+      studios: "OUTSERA",
+      producers: "OUTSERA PRODUCTIONS",
+      winner: false,
+    };
+    await request(app).post(`/movies/`).send(insertMovie);
+    const response = await request(app).get("/movies/");
+    expect(response.status).toBe(200);
+    expect(response.body.length).toBe(expectedMovies.length+1);
+    const filterByTemplate = expect.arrayContaining(
+      expectedMovies.map((movie) => expect.objectContaining(movie))
+    );
+
+    expect(response.body).not.toEqual(filterByTemplate);
+  });
 });
