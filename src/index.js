@@ -17,9 +17,9 @@ readMoviesFromCSV('../../../movielist.csv')
 
 app.use(cors());
 
-require('./app/controllers/index')(app);
 app.use('/movies', require('./app/controllers/movie/movieController')(Movie));
-
+const aboutRoute = require('./app/controllers/aboutController');
+app.use('/', aboutRoute);
 
 const PORT =  4000;
 app.listen(PORT, () => {
