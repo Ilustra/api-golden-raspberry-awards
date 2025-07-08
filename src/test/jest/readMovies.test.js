@@ -37,8 +37,28 @@ describe("readMoviesFromCSV", () => {
 
     expect(response.body).toEqual(filterByTemplate);
   });
+  it("should update and not match the data in the CSV file", async () => {
+    const expectedMovies = await readMoviesFromCSV("../../../movielist.csv");
+    const updatedMovie = {
+      id: 1,
+      year: 2023,
+      title: "MOVIE OUTSERA UPDATED",
+      studios: "OUTSERA",
+      producers: "OUTSERA PRODUCTIONS",
+      winner: false,
+    };
+    await request(app).put(`/movies/${updatedMovie.id}`).send(updatedMovie);
+    const response = await request(app).get("/movies/");
+    expect(response.status).toBe(200);
+    expect(response.body.length).toBe(expectedMovies.length);
+    const filterByTemplate = expect.arrayContaining(
+      expectedMovies.map((movie) => expect.objectContaining(movie))
+    );
 
-    it("should no match the data in the CSV file Test", async () => {
+    expect(response.body).not.toEqual(filterByTemplate);
+  });
+
+  it("should no match the data in the CSV file Test", async () => {
     const expectedMoviesTest = await readMoviesFromCSV("../../../movielistTest.csv");
     const response = await request(app).get("/movies");
 

@@ -27,7 +27,7 @@ PUT {{URL}}/movies/1
 Content-Type: application/json
 
 {
-    "id": 207,
+  "id": 1,
   "year": 2023,
   "title": "MOVIE OUTSERA UPDATED",
   "studios": "OUTSERA",
