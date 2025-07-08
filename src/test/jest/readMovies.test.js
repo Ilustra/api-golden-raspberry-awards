@@ -37,4 +37,15 @@ describe("readMoviesFromCSV", () => {
 
     expect(response.body).toEqual(filterByTemplate);
   });
+
+    it("should no match the data in the CSV file Test", async () => {
+    const expectedMoviesTest = await readMoviesFromCSV("../../../movielistTest.csv");
+    const response = await request(app).get("/movies");
+
+    const filterByTemplate = expect.arrayContaining(
+      expectedMoviesTest.map((movie) => expect.objectContaining(movie))
+    );
+
+    expect(response.body).not.toEqual(filterByTemplate);
+  });
 });
