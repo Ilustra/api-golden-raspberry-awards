@@ -1,6 +1,6 @@
 const express = require('express');
 const Movie = require('../../models/movie');
-const { findAll, findWinner } = require('../../service/MovieService');
+const { findAll, findWinner } = require('../../service/movieService');
 
 
 
